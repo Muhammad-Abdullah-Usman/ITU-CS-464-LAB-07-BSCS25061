@@ -133,8 +133,13 @@ public class UIManager : MonoBehaviour
             return false;
         }
 
-        if (currentScreen == null)
+        if (currentScreen == null || PlayerPrefs.GetInt("WanderingBlade.ReducedMotion", 0) == 1)
         {
+            if (currentScreen != null)
+            {
+                SetInstant(currentScreen, false);
+            }
+
             SetInstant(target, true);
             currentScreen = target;
             return true;
